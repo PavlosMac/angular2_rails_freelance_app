@@ -1,0 +1,99 @@
+<h1> Create proposal </h1>
+
+<div>
+ <form #proposalForm="ngForm">
+   <div class="form-group">
+     <label for="customer">Customer name</label>
+     <input type="text"
+            id="customer"
+            placeholder="ABC company"
+            required
+            name="customer"
+            #customer='ngModel'
+            [(ngModel)]="proposal.customer">
+            <div
+              [hidden]="customer.valid || customer.pristine">
+              Customer name is required
+            </div>
+     </div>
+     <div class="form-group">
+       <label for="portfolio_url">Portfolio URL</label>
+       <input type="text"
+              id="portfolio_url"
+              required
+              name="portfolio_url"
+              #portfolio_url='ngModel'
+              [(ngModel)]="proposal.portfolio_url">
+              <div
+                [hidden]="portfolio_url.valid || portfolio_url.pristine">
+                Provide full URL
+              </div>
+       </div>
+       <div class="form-group">
+         <label for="tools">Tools to use</label>
+         <input type="text"
+                id="tools"
+                required
+                name="tools"
+                #tools='ngModel'
+                [(ngModel)]="proposal.tools">
+                <div
+                  [hidden]="tools.valid || tools.pristine">
+                  Provide all tools to be used
+                </div>
+         </div>
+
+         <div class="form-group">
+           <label for="weeks_to_complete">Weeks to complete</label>
+           <input type="number"
+                  id="weeks_to_complete"
+                  required
+                  name="weeks_to_complete"
+                  #weeks_to_complete='ngModel'
+                  [(ngModel)]="proposal.weeks_to_complete">
+                  <div
+                    [hidden]="weeks_to_complete.valid || weeks_to_complete.pristine">
+                    Include weeks to be completed
+                  </div>
+           </div>
+           <div class="form-group">
+             <label for="email">Client Email <em>Optional</em></label>
+             <input type="email"
+                    id="clients_email"
+                    name="clients_email"
+                    #clients_email='ngModel'
+                    [(ngModel)]="proposal.clients_email">
+             </div>
+ </form>
+</div>
+
+<div>
+  <p> Hi {{ proposal.customer }}
+  <p>Kyloe Partners Ltd.
+Software Developer
+Job description (to be read in conjunction with employment contract)
+In this role, you’ll report to either Senior Software Developer or Stewart, Director of Technical Services (depending on project). Your main responsibilities will be:
+-to write well designed, testable, efficient code using {{ proposal.tools }}
+-to build APIs to create new services and integrations and with this URL {{ proposal.portfolio_url }}
+-to troubleshoot and solve complex problems, providing effective solutions to client problems -to ensure quality of work in line with each ’spec' through thorough testing before delivery to client
+-to keep up to date with the technologies necessary to deliver client projects (including changes to the Bullhorn CRM) </p>
+
+
+<p>It will also be important to:
+- provide first-class service to clients, through effective communication, being helpful, attending meetings and providing answers as and when necessary
+- work collaboratively within the Kyloe team, sharing ideas and ultimately providing the best possible service to Kyloe clients for {{ proposal.estimated_hours }}
+- always work in the best interests of the company (in line with Kyloe’s vision and values)
+- where appropriate, make suggestions and recommendations which will be for the benefit of
+the company</p>
+
+<p>Person Specification
+- experience using modern technologies (javascript / HTML / CSS/ JAVA/ AngularJs)
+- commercial experience (desirable not essential)
+- able to learn quickly and keep up to date industry changes @ {{ proposal.hourly_rate }}
+- - - - -
+excellent communicator – must be comfortable talking with clients all over the world great at problem solving and trouble-shooting
+team player @ {{ proposal.hourly_rate * proposal.estimated_hours }}
+able to plan and manage time effectively
+self motivated </p>
+
+</div>
