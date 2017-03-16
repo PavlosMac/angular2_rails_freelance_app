@@ -9,28 +9,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var DocumentsComponent = (function () {
     function DocumentsComponent() {
-        this.pageTitle = "Documents";
+        this.pageTitle = "Document dashboard";
         this.documents = [
             {
                 title: "My first document",
                 description: "some description about something",
                 file_url: 'http://google.com/',
                 updated_at: '12/12/2112',
-                image_url: 'http://google.com/'
+                image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Highland_cattle_(tedandjen).jpg'
             },
             {
                 title: "My 2nd document",
                 description: "some description about something",
                 file_url: 'http://google.com/',
                 updated_at: '12/12/2112',
-                image_url: 'http://google.com/'
+                image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Highland_cattle_(tedandjen).jpg'
             },
             {
                 title: "My 3rd document",
                 description: "some description about something",
                 file_url: 'http://google.com/',
                 updated_at: '12/12/2112',
-                image_url: 'http://google.com/'
+                image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Highland_cattle_(tedandjen).jpg'
             }
         ];
     }
@@ -40,7 +40,8 @@ DocumentsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'documents',
-        templateUrl: 'documents.component.html'
+        templateUrl: 'documents.component.html',
+        styleUrls: ['documents.component.css'],
     })
 ], DocumentsComponent);
 exports.DocumentsComponent = DocumentsComponent;
