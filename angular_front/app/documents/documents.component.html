@@ -1,10 +1,12 @@
-
-<div *ngFor="let doc of documents" class="card mb-3">
+<div class="container">
   <h1 class="headline">{{pageTitle}}></h1>
-  <img class="card-img-top" src="{{doc.image_url}}"  alt="Card image cap" width="80%">
-  <div class="card-block">
-    <h4 class="card-title">{{doc.title}}</h4>
-    <p class="card-text">{{ doc.description }}</p>
-    <p class="card-text"><small class="text-muted">Updated at: {{ doc.updated_at }}</small></p>
+  <div class="card " *ngFor="let doc of documents">
+    <img class="card-img-top" src="{{doc.image_url}}"  alt="Card image cap" width="80%">
+    <div class="card-block">
+      <h4 class="card-title">{{doc.title}}</h4>
+      <p class="card-text">{{ doc.description }}</p>
+      <div>
+        <p class="card-text"><small class="text-muted">{{ doc.updated_at }}</small></p>
+      </div>
+    </div>
   </div>
-</div>
