@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var proposal_service_1 = require("./proposal.service");
 var ProposalShowComponent = (function () {
     function ProposalShowComponent(route) {
         this.route = route;
@@ -28,7 +29,8 @@ ProposalShowComponent = __decorate([
         moduleId: module.id,
         selector: 'proposal-show',
         templateUrl: 'proposal-show.component.html',
-        styleUrls: ['proposal-show.component.css']
+        styleUrls: ['proposal-show.component.css'],
+        providers: [proposal_service_1.ProposalService]
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute])
 ], ProposalShowComponent);
