@@ -1,9 +1,36 @@
 <div class="container">
-  <div class="card proposal-card">
-    <h1> Proposal Show</h1>
+  <div *ngIf='proposal' class="card proposal-card">
+    <h1> {{ proposal.customer }}</h1>
+    <div class="col-md-12">
       <div>
-        The id for this proposal is {{ id }}
+          <h3> Hi {{ proposal.customer }} </h3>
+            <p>
+              Software Developer
+              Job description (to be read in conjunction with employment contract)
+              In this role, you’ll report to either Senior Software Developer or Stewart, Director of Technical Services (depending on project). Your main responsibilities will be:
+              -to write well designed, testable, efficient code using {{ proposal.tools }}
+              -to build APIs to create new services and integrations and with this URL <a href="{{ proposal.portfolio_url }}">here</a>
+              -to troubleshoot and solve complex problems, providing effective solutions to client problems -to ensure quality of work in line with each ’spec' through thorough testing before delivery to client
+              -to keep up to date with the technologies necessary to deliver client projects (including changes to the Bullhorn CRM) </p>
+
+            <p>It will also be important to:
+            - provide first-class service to clients, through effective communication, being helpful, attending meetings and providing answers as and when necessary
+            - work collaboratively within the Kyloe team, sharing ideas and ultimately providing the best possible service to Kyloe clients for {{ proposal.estimated_hours }}
+            - always work in the best interests of the company (in line with Kyloe’s vision and values)
+            - where appropriate, make suggestions and recommendations which will be for the benefit of
+            the company</p>
+
+            <p>Person Specification
+              - experience using modern technologies (javascript / HTML / CSS/ JAVA/ AngularJs)
+              - commercial experience (desirable not essential)
+              - able to learn quickly and keep up to date industry changes @ {{ proposal.hourly_rate }}
+              - - - - -
+              excellent communicator – must be comfortable talking with clients all over the world great at problem solving and trouble-shooting
+              team player @ {{ proposal.hourly_rate * proposal.estimated_hours | currency:'GBP':true:'.01' }}
+              able to plan and manage time effectively
+              self motivated </p>
       </div>
+    </div>
   </div>
 
 </div>

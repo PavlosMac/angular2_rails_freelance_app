@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Proposal } from './proposal';
 import { Observable } from 'rxjs/Rx';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
+import { Proposal } from './proposal';
 import { ProposalService } from './proposal.service';
 
 @Component({
@@ -12,18 +14,23 @@ import { ProposalService } from './proposal.service';
   providers: [ ProposalService ]
 })
 export class ProposalShowComponent implements OnInit {
-  id: number;
-  routeId: any;
 
-  constructor(
-    private route: ActivatedRoute
-  ) {}
 
-  ngOnInit(): void {
-    this.routeId = this.route.params.subscribe(
-      params => {
-        this.id = + params['id'];
+      constructor(
+              private route: ActivatedRoute,
+              private http: Http,
+              private proposalService: ProposalService
+      ) {}
+
+      @Input()
+        proposal: Proposal;
+
+
+
+      ngOnInit(): void {
+              let proposalRequest = this.route.params
+                                    .flatMap((params) =>
+                                      this.proposalService.getProposal( +params['id'] ));
+                  proposalRequest.subscribe(response => this.proposal = response.json());
       }
-    )
-  }
 }
