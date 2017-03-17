@@ -14,23 +14,23 @@ export class DocumentsComponent implements OnInit {
 
   pageTitle: string = "Document dashboard"
   errorMessage: string;
-  documents: Document[] = [];
-  mode = 'Observables';
+  documents: Document[];
+  mode = 'Observable';
 
   constructor(
         private documentService: DocumentService
   ) {}
 
-  ngOnInit() {
-        let timer = Observable.timer(0, 5000);
-        timer.subscribe(() => this.getDocuments());
+        ngOnInit() {
+            let timer = Observable.timer(0, 5000);
+            timer.subscribe(() => this.getDocuments());
   }
 
-  getDocuments() {
-        this.documentService.getDocuments()
-                          .subscribe(
-                            documents => this.documents = documents,
-                            error => this.errorMessage = <any> error
+        getDocuments() {
+            this.documentService.getDocuments()
+                                .subscribe(
+                                  documents => this.documents = documents,
+                                  error => this.errorMessage = <any> error
                           );
   }
 }

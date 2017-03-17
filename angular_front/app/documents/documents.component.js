@@ -16,8 +16,7 @@ var DocumentsComponent = (function () {
     function DocumentsComponent(documentService) {
         this.documentService = documentService;
         this.pageTitle = "Document dashboard";
-        this.documents = [];
-        this.mode = 'Observables';
+        this.mode = 'Observable';
     }
     DocumentsComponent.prototype.ngOnInit = function () {
         var _this = this;

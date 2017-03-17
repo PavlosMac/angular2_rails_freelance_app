@@ -8,23 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Rx_1 = require("rxjs/Rx");
-var DocumentService = (function () {
-    //dependency injection on http object
-    function DocumentService(http) {
+var ProposalService = (function () {
+    function ProposalService(http) {
         this.http = http;
-        this.documentsUrl = 'http://localhost:3001/freelance_documents.json';
+        this.proposalsUrl = 'http://localhost:3002/proposals.json';
     }
-    DocumentService.prototype.getDocuments = function () {
-        return this.http.get(this.documentsUrl)
+    ProposalService.prototype.getProposals = function () {
+        return this.http.get(this.proposalsUrl)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    DocumentService.prototype.handleError = function (error) {
-        // In a real world app, we might use a remote logging infrastructure
+    ProposalService.prototype.handleError = function (error) {
         var errMsg;
         if (error instanceof http_1.Response) {
             var body = error.json() || '';
@@ -37,11 +34,11 @@ var DocumentService = (function () {
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
     };
-    return DocumentService;
+    return ProposalService;
 }());
-DocumentService = __decorate([
+ProposalService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], DocumentService);
-exports.DocumentService = DocumentService;
-//# sourceMappingURL=document.service.js.map
+], ProposalService);
+exports.ProposalService = ProposalService;
+//# sourceMappingURL=proposal.service.js.map
