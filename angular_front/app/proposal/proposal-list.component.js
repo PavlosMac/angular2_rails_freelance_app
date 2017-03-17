@@ -5,20 +5,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var core_1 = require("@angular/core");
-var proposal_1 = require("./proposal");
+var proposal_service_1 = require("./proposal.service");
+var Rx_1 = require("rxjs/Rx");
 var ProposalListComponent = (function () {
-    function ProposalListComponent() {
-        this.proposalOne = new proposal_1.Proposal(15, 'Decode Copy', 'http://linneasportfolio.com', 'Pavlos Budget App', 150, 120, 4, 'linnea@decodecopy.com');
-        this.proposalTwo = new proposal_1.Proposal(13, 'Too daa company', 'http://linneasportfolio.com', 'Pavlos duck App', 150, 120, 11, 'linnea@decodecopy.com');
-        this.proposalThree = new proposal_1.Proposal(43, 'ABC dsde', 'http://linneasportfolio.com', 'Pavlos dedaa App', 150, 120, 12, 'linnea@decodecopy.com');
-        this.proposals = [
-            this.proposalOne,
-            this.proposalTwo,
-            this.proposalThree
-        ];
+    function ProposalListComponent(proposalService) {
+        this.proposalService = proposalService;
+        this.mode = 'Observable';
     }
+    ProposalListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var timer = Rx_1.Observable.timer(0, 5000);
+        timer.subscribe(function () { return _this.getProposals(); });
+    };
+    ProposalListComponent.prototype.getProposals = function () {
+        var _this = this;
+        this.proposalService.getProposals()
+            .subscribe(function (proposals) { return _this.proposals = proposals; }, function (error) { return _this.errorMessage = error; });
+    };
     return ProposalListComponent;
 }());
 ProposalListComponent = __decorate([
@@ -27,7 +34,9 @@ ProposalListComponent = __decorate([
         selector: 'proposal-list',
         templateUrl: 'proposal-list.component.html',
         styleUrls: ['proposal-list.component.css'],
-    })
+        providers: [proposal_service_1.ProposalService]
+    }),
+    __metadata("design:paramtypes", [proposal_service_1.ProposalService])
 ], ProposalListComponent);
 exports.ProposalListComponent = ProposalListComponent;
 //# sourceMappingURL=proposal-list.component.js.map
