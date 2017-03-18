@@ -39,5 +39,11 @@ export class ProposalService {
         return Observable.throw(errMsg);
       }
 
+  createProposal(proposal) {
+        let headers = new Headers({'Content-type': 'application/json'})
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(this.proposalsUrl, JSON.stringify(proposal), { headers: headers})
+                        .map((res: Response) => res.json());
+  }
 
 }

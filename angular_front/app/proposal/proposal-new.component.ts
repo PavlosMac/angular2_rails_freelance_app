@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Proposal } from './proposal';
+import { ProposalService } from './proposal.service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   moduleId: module.id,
@@ -8,5 +10,22 @@ import { Proposal } from './proposal';
   styleUrls: ['proposal-new.component.css']
 })
 export class ProposalNewComponent {
-  proposal = new Proposal
+  proposal = new Proposal;
+  submitted: boolean = false;
+
+  constructor(
+    private proposalService: ProposalService
+  ) {}
+
+  createProposal(proposal) {
+    this.submitted = true;
+    this.proposalService.createProposal(proposal)
+                        .subscribe(
+                          data => { return true } ,
+                          error =>{
+                            console.log("error saving proposal");
+                            return Observable.throw(error);
+                          }
+                        );
+  }
 }
