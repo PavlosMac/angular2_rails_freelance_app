@@ -7,7 +7,8 @@ import { Observable } from 'rxjs/Rx';
   moduleId: module.id,
   selector: 'proposal-new',
   templateUrl: 'proposal-new.component.html',
-  styleUrls: ['proposal-new.component.css']
+  styleUrls: ['proposal-new.component.css'],
+  providers: [ ProposalService]
 })
 export class ProposalNewComponent {
   proposal = new Proposal;
@@ -17,7 +18,7 @@ export class ProposalNewComponent {
     private proposalService: ProposalService
   ) {}
 
-  createProposal(proposal) {
+  createProposal(proposal: Proposal) {
     this.submitted = true;
     this.proposalService.createProposal(proposal)
                         .subscribe(
